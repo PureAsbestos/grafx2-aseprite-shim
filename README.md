@@ -10,6 +10,6 @@ Contributions are welcome. By contributing, you agree to release your contributi
 To use this script, place it, along with the GrafX2 script of your choice, in your Aseprite scripts folder. (This folder can be found from within Aseprite by clicking `File > Scripts > Open Scripts Folder`) Then, create a simple script to load the GrafX2 script with contents as follows:
 ```
 dofile(".grafx2-aseprite-shim.lua")
-dofile("PATH_TO_GRAFX2_SCRIPT")
+dofile("PATH_TO_YOUR_GRAFX2_SCRIPT")
 ```
 This is the script that you will load in Aseprite by clicking `File > Scripts > NAME_OF_YOUR_SCRIPT`
