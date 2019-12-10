@@ -1,4 +1,4 @@
-# grafx2-aseprite-shim
+# GrafX2-Aseprite Shim
 ## A shim between the GrafX2 and Aseprite APIs, allowing use of GrafX2 scripts with Aseprite.
 
 ### What is it
