@@ -196,7 +196,7 @@ function inputbox(title, ...)
 
 end
 
--- BEGIN [NECESSARY FOR DB_PALETTE_ANALYSIS] --
+-- END [NECESSARY FOR DB_PALETTE_ANALYSIS] --
 
 --!FIXME
 function setbrushsize(size)
