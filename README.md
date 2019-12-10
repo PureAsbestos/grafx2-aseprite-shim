@@ -12,4 +12,4 @@ To use this script, place it, along with the GrafX2 script of your choice, in yo
 dofile(".grafx2-aseprite-shim.lua")
 dofile("PATH_TO_YOUR_GRAFX2_SCRIPT")
 ```
-This is the script that you will load in Aseprite by clicking `File > Scripts > NAME_OF_YOUR_SCRIPT`
+This is the script that you will load in Aseprite by clicking `File > Scripts > NAME_OF_YOUR_SCRIPT`. It may be necessary to reload Aseprite in order for the script to become visible.
