@@ -1,5 +1,4 @@
 # GrafX2-Aseprite Shim
-A shim between the GrafX2 and Aseprite APIs, allowing use of GrafX2 scripts with Aseprite.
 
 ## What is it
 This is a script designed to allow Aseprite users to utilize GrafX2 scripts. Currently, it is very limited in capabilities, and **many** scripts **will not work**. The only script known to work is the palette analysis function of [DB-Toolbox](http://pixeljoint.com/forum/forum_posts.asp?TID=12854), which is what started this project.
