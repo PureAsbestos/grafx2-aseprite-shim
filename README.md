@@ -8,7 +8,7 @@ This is a script designed to allow Aseprite users to utilize GrafX2 scripts. Cur
 Contributions are welcome. By contributing, you agree to release your contribution under [the current license](https://github.com/PureAsbestos/grafx2-aseprite-shim/blob/master/LICENSE).
 
 ### How to use it
-To use this script, place it, along with the GrafX2 script of your choice, in your Aseprite scripts folder. (This folder can be found from within Aseprite by clicking `File > Scripts > Open Scripts Folder`) Then, create a simple script to load the GrafX2 script as follows:
+To use this script, place it, along with the GrafX2 script of your choice, in your Aseprite scripts folder. (This folder can be found from within Aseprite by clicking `File > Scripts > Open Scripts Folder`) Then, create a simple script to load the GrafX2 script with contents as follows:
 ```
 dofile(".grafx2-aseprite-shim.lua")
 dofile("PATH_TO_GRAFX2_SCRIPT")
