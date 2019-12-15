@@ -36,19 +36,6 @@ math.pow = function(x,y) return x^y end
 updatescreen = app.refresh
 function waitbreak(...) end
 
-function statusmessage(message)
-	print(message)
-end
-
--- foreground and background colors
-function getforecolor() 
-	return app.fgColor
-end
-
-function getbackcolor()
-	return app.bgColor
-end
-
 -- get color from palette
 function getcolor_obj(i)
 	return get_pal():getColor(i)
@@ -108,17 +95,13 @@ function getpicturepixel(x, y)
 	return matchcolor(r, g, b)
 end
 
-function getpicturesize()
-	return app.activeSprite.width, app.activeSprite.height
-end
-
 function drawfilledrect(x1, y1, x2, y2, c)
 	app.useTool{ tool="filled_rectangle", color=getcolor_obj(c), points={Point(x1, y1), Point(x2, y2)}, cel=get_cel0() }
 end
 
 -- dialog to click a button in a select menu
 function selectbox(title, ...)
-	local args = {...}
+	local args = table.pack(...)
 	local dlg = Dialog(title)
 
 	local function closethenrun(f)
@@ -139,64 +122,68 @@ end
 -- dialog to get user input
 function inputbox(title, ...)
 	-- colors = get_pal()
-	local args = {...}
+	local args = table.pack(...)
 	local dlg = Dialog(title)
 
-	local function closethenrun(f)
-		return function() dlg:close(); f(); end
-	end
-
-	local function okbutton()
-		dlg:close()
-	end
-
 	for i=1,(#args/5) do
-		local label     = args[i*5-4]
-		local default   = args[i*5-3]
-		local min       = args[i*5-2]
-		local max       = args[i*5-1]
-		local precision = args[i*5]
+		local label   = args[i*5-4]
+		local default = args[i*5-3]
+		local min     = args[i*5-2]
+		local max     = args[i*5-1]
+		local digits  = args[i*5  ]
 
-		if min == 0 and max == 1 and precision <= 0 then
-			if precision == 0 then
-				dlg:check{ id=tostring(i+1), label=label, selected=default }
-			elseif precision < 0 then --!TODO Implement radio buttons properly
-				dlg:check{ id=tostring(i+1), label=label, selected=default }
-			end
+    if min == 0 and max == 0 then
+      dlg:label{ label=label }
+		elseif min == 0 and max == 1 and digits == 0 then
+			dlg:check{ id=tostring(i+1), label=label, selected=(default ~= 0) }
+		elseif min == 0 and max == 1 and digits < 0 then
+			dlg:radio{ id=tostring(i+1), text=label, selected=(default ~= 0) }
 		else
-			dlg:number{ id=tostring(i+1), label=label, decimals=precision, text=tostring(default) }
+			dlg:slider{ id=tostring(i+1), label=label, value=default, min=min, max=max }
 		end
 
-		dlg:newrow()
-
 	end
 
-	dlg:button{ id="1", text="OK"}
+	dlg:button{ text="OK", id="1" }
 	dlg:button{ text="Cancel" }
 
 	dlg:show()
 
 	local data = dlg.data
-	local out = {}
-	for k,v in pairs(data) do
-		if type(v) == "boolean" then
-			out[math.tointeger(k)] = v and 1 or 0
-		else
-			out[math.tointeger(k)] = v
-		end
-	end
+  local out = {}
+  for k,v in pairs(data) do
+    if type(v) == "boolean" then
+      out[math.tointeger(k)] = v and 1 or 0
+    else
+      out[math.tointeger(k)] = v
+    end
+  end
 
-	if dlg.data["1"] then
-		out[1] = true
-	else
-		out[1] = false
-	end
+  out[1] = (out[1] == 1)
 
 	return table.unpack(out)
 
 end
 
+
 -- END [NECESSARY FOR DB_PALETTE_ANALYSIS] --
+
+function statusmessage(message)
+  print(message)
+end
+
+-- foreground and background colors
+function getforecolor() 
+  return app.fgColor
+end
+
+function getbackcolor()
+  return app.bgColor
+end
+
+function getpicturesize()
+	return app.activeSprite.width, app.activeSprite.height
+end
 
 --!FIXME
 function setbrushsize(size)
