@@ -1,7 +1,7 @@
 # GrafX2-Aseprite Shim
 
 ## What is it
-This is a script designed to allow Aseprite users to utilize GrafX2 scripts. Currently, it is very limited in capabilities, and **many** scripts **will not work**. The only script known to work is the palette analysis function of [DB-Toolbox](http://pixeljoint.com/forum/forum_posts.asp?TID=12854), which is what started this project.
+This is a script designed to allow Aseprite users to utilize GrafX2 scripts. Currently, it is very limited in capabilities, and **many** scripts **will not work**. The only script known to work is the palette analysis function of [DB-Toolbox](https://pixeljoint.com/forum/forum_posts.asp?TID=26080), which is what started this project.
 
 ## Contributions
 Contributions are welcome. By contributing, you agree to release your contribution under [the current license](https://github.com/PureAsbestos/grafx2-aseprite-shim/blob/master/LICENSE).
